@@ -7,6 +7,10 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from dataclasses import dataclass
 
+from src.components.data_transformation import DataTransformationConfig
+from src.components.data_transformation import DataTransformation
+
+
 # 7. after EDA
 @dataclass
 class DataIngestionConfig:  
@@ -26,9 +30,21 @@ class DataIngestion:
         try:
             df = pd.read_csv('notebook\data\kidney_disease.csv')
 
+            ### handle noice values
+            df['pcv']=df['pcv'].apply(lambda x: '41' if x=='\t?' or x=='\t43'  else x)
+            df['wc']=df['wc'].apply(lambda x: '9800' if x=='\t6200'or x=='\t8400' or x=='\t?'  else x)
+            df['rc']=df['rc'].apply(lambda x: '5.2' if x=='\t?'  else x)
+            df['dm']=df['dm'].apply(lambda x: 'no' if x=='\tno' else x)
+            df['dm']=df['dm'].apply(lambda x: 'yes' if x==' yes'or x=='\tyes'  else x)
+            df['cad']=df['cad'].apply(lambda x: 'no' if x=='\tno' else x)
+            df['classification']=df['classification'].apply(lambda x: 'ckd' if x=='ckd\t'  else x)
+
+            ### converting pcv, wc rc columns  to numeric values
+            df = df.astype({'pcv':'float','wc':'float', 'rc': 'float'})
+
             logging.info('Read the dataset as dataframe')
 
-            os.makedirs(os.path.dirname(self.ingestion_config.train_data_path),exist_ok=True) # create directory if not exist if exist delete and recreate
+            os.makedirs(os.path.dirname(self.ingestion_config.train_data_path),exist_ok=True) # create "artifacts" directory if not exist if exist delete and recreate
             
             df.to_csv(self.ingestion_config.raw_data_path, index=False, header=True)
 
@@ -49,7 +65,12 @@ class DataIngestion:
         except Exception as e:
             raise logging.info(CustomException(e,sys))
             
+# before data transformation            
 # 9. run:python -m src.components.data_ingestion
 if __name__=="__main__":
     obj = DataIngestion()
-    obj.initiate_data_ingestion()
+    train_data,test_data=obj.initiate_data_ingestion()
+
+    data_transformation = DataTransformation()
+
+    data_transformation.initiate_data_transformation(train_data,test_data)

@@ -164,5 +164,10 @@ Werkzeug==3.0.1
 widgetsnbextension==4.0.10
 wrapt==1.14.1
 xgboost==2.0.3
--e .
+# -e .
+catboost
+xgboost
+dill
+Flask
+
 
