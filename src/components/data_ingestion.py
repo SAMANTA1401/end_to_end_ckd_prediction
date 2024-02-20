@@ -10,6 +10,8 @@ from dataclasses import dataclass
 from src.components.data_transformation import DataTransformationConfig
 from src.components.data_transformation import DataTransformation
 
+from src.components.model_trainer import ModelTrainerConfig
+from src.components.model_trainer import ModelTrainer
 
 # 7. after EDA
 @dataclass
@@ -41,7 +43,7 @@ class DataIngestion:
 
             ### converting pcv, wc rc columns  to numeric values
             df = df.astype({'pcv':'float','wc':'float', 'rc': 'float'})
-
+            # df = df.astype({'age':'float32', 'bp':'float32', 'sg':'float32', 'al':'float32', 'su':'float32', 'bgr':'float32', 'bu':'float32', 'sc':'float32', 'sod':'float32', 'pot':'float32', 'hemo':'float32','pcv':'float32','wc':'float32','rc':'float32'})
             logging.info('Read the dataset as dataframe')
 
             os.makedirs(os.path.dirname(self.ingestion_config.train_data_path),exist_ok=True) # create "artifacts" directory if not exist if exist delete and recreate
@@ -71,6 +73,12 @@ if __name__=="__main__":
     obj = DataIngestion()
     train_data,test_data=obj.initiate_data_ingestion()
 
+# run:python -m src.components.data_ingestion then go model trainner  component
+## 13 .
     data_transformation = DataTransformation()
+##18
+    train_arr, test_arr,_ = data_transformation.initiate_data_transformation(train_data,test_data)
 
-    data_transformation.initiate_data_transformation(train_data,test_data)
+    modeltrainer = ModelTrainer()
+    model_name,f1_sco,accuracy=modeltrainer.initiate_model_trainer(train_arr,test_arr)
+    print(f"Model Name:{model_name} , f1_Score :{f1_sco} , Accuracy: {accuracy}")
