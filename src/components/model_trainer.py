@@ -66,9 +66,14 @@ class ModelTrainer:
                 "Naive Bays Classifier" : GaussianNB(),
                 "Neural Network" :  NNModel()
             }
+            ##hyper parameter tuning
+            # params={
+                # "Random Forest Classifier": {"n_estimators": [100,
+            # }
+
             ##15.3 go to utils.py ## 16
             model_report:dict=evaluate_models(X_train=X_ros,y_train=y_ros,X_test=X_test,y_test=y_test, models=models)
-          ### 17 after evaluate model
+          ### 17 after evaluate model then go data ingestion
             ## to get the best model
             best_model_f1_score = max(sorted(model_report.values()))
 

@@ -32,6 +32,8 @@ class DataIngestion:
         try:
             df = pd.read_csv('notebook\data\kidney_disease.csv')
 
+            ## drop id
+            df.drop(columns=['id'],axis=1,inplace=True)    
             ### handle noice values
             df['pcv']=df['pcv'].apply(lambda x: '41' if x=='\t?' or x=='\t43'  else x)
             df['wc']=df['wc'].apply(lambda x: '9800' if x=='\t6200'or x=='\t8400' or x=='\t?'  else x)
@@ -76,7 +78,7 @@ if __name__=="__main__":
 # run:python -m src.components.data_ingestion then go model trainner  component
 ## 13 .
     data_transformation = DataTransformation()
-##18
+##18 then go to application.py
     train_arr, test_arr,_ = data_transformation.initiate_data_transformation(train_data,test_data)
 
     modeltrainer = ModelTrainer()

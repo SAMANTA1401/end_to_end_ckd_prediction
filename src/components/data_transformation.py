@@ -7,7 +7,7 @@ import numpy as np
 from sklearn.compose import ColumnTransformer
 from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import OneHotEncoder, StandardScaler, LabelEncoder, OrdinalEncoder
+from sklearn.preprocessing import OneHotEncoder, StandardScaler, LabelEncoder, OrdinalEncoder, MinMaxScaler
 
 from src.exception import CustomException
 from src.logger import logging
@@ -33,6 +33,7 @@ class DataTransformation:
                 steps=[
                     ('imputer', SimpleImputer(strategy='median')),
                     ('scaler', StandardScaler())
+                    # ('scaler',MinMaxScaler())
                     ]
 
                 )
@@ -48,8 +49,11 @@ class DataTransformation:
                     # ('imputer6',SimpleImputer(missing_values='\t6200', strategy='constant', fill_value='6200')),
                     # ('imputer7',SimpleImputer(missing_values='\t8400', strategy='constant', fill_value='8400')),
                     # ('imputer',SimpleImputer(missing_values='ckd\t', strategy='constant', fill_value='ckd')),
-                    ('ordinal_encoder',OrdinalEncoder()),
-                    ("scaler",StandardScaler(with_mean=False)),
+                    # ('ordinal_encoder',OrdinalEncoder()),
+                    ('one_hot_encoder',OneHotEncoder()),
+
+                    ("scaler",StandardScaler(with_mean=False))
+                    # ('scaler',MinMaxScaler())
 
 
                 ]
