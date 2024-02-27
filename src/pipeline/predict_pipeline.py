@@ -1,6 +1,7 @@
 import os
 import sys
 import pandas as pd
+import numpy
 from src.exception import CustomException
 from  src.utils import load_object
 from src.logger import logging
@@ -36,7 +37,7 @@ class CustomData:
          su:float, bgr:float, bu:float, sc:float, sod:float,
          pot:float, hemo:float,pcv:float,wc:float,rc:float,
          rbc:str,pc:str,pcc:str,ba:str,htn:str,dm:str,cad:str,appet:str,pe:str,ane:str):
-
+        ## check carefully theseinput variable name in html page , datatype
 
          self.age = age
          self.bp = bp
@@ -51,7 +52,6 @@ class CustomData:
          self.hemo = hemo
          self.pcv = pcv
          self.wc = wc
-         self.rc=rc
          self.rc=rc
          self.rbc = rbc
          self.pc = pc
@@ -75,7 +75,9 @@ class CustomData:
 
             }
             ### rearange the columns like raw data
-            return pd.DataFrame(custom_data_input_dict)
+            df = pd.DataFrame(custom_data_input_dict)
+            # return df.to_numpy()
+            return df
 
         except Exception as e:
             raise logging.info(CustomException(e,sys))

@@ -36,7 +36,7 @@ def predict_data():
             pcv =float(request.form.get('pcv')),
             wc =float(request.form.get('wc')),
             rc=float(request.form.get('rc')),
-            rbc=request.form.get('rb'),
+            rbc=request.form.get('rbc'), # got error rb instead of rbc >>[Found unknown categories [None] in column 0 during transform]
             pc =request.form.get('pc'),
             pcc=request.form.get('pcc'),
             ba =request.form.get('ba'),
@@ -46,6 +46,7 @@ def predict_data():
             appet = request.form.get('appet'),
             pe =request.form.get('pe'),
             ane =request.form.get('ane')
+            ## check carefully input variable name
         )
         pred_df = data.get_data_as_data_frame()
         print(pred_df) ## input data frame

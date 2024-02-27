@@ -32,8 +32,8 @@ class DataTransformation:
             num_pipeline = Pipeline(
                 steps=[
                     ('imputer', SimpleImputer(strategy='median')),
-                    ('scaler', StandardScaler())
-                    # ('scaler',MinMaxScaler())
+                    # ('scaler', StandardScaler())
+                    ('scaler',MinMaxScaler())
                     ]
 
                 )
@@ -49,11 +49,11 @@ class DataTransformation:
                     # ('imputer6',SimpleImputer(missing_values='\t6200', strategy='constant', fill_value='6200')),
                     # ('imputer7',SimpleImputer(missing_values='\t8400', strategy='constant', fill_value='8400')),
                     # ('imputer',SimpleImputer(missing_values='ckd\t', strategy='constant', fill_value='ckd')),
-                    # ('ordinal_encoder',OrdinalEncoder()),
-                    ('one_hot_encoder',OneHotEncoder()),
+                    ('ordinal_encoder',OrdinalEncoder()),
+                    # ('one_hot_encoder',OneHotEncoder()),
 
-                    ("scaler",StandardScaler(with_mean=False))
-                    # ('scaler',MinMaxScaler())
+                    # ("scaler",StandardScaler(with_mean=False))
+                    ('scaler',MinMaxScaler())
 
 
                 ]
