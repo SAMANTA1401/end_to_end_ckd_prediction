@@ -6,9 +6,8 @@ from sklearn.preprocessing import StandardScaler
 from src.pipeline.predict_pipeline import CustomData, PredictPipeline
 
 ## 19  then go predict pipeline
-application=Flask( __name__)
+app=Flask( __name__)
 
-app=application
 #route for home page
 @app.route('/')
 def index():
@@ -59,5 +58,5 @@ def predict_data():
 
 
 if __name__=='__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=8080) #for aws
         
