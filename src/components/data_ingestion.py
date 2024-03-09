@@ -75,7 +75,7 @@ if __name__=="__main__":
     obj = DataIngestion()
     train_data,test_data=obj.initiate_data_ingestion()
 
-# run:python -m src.components.data_ingestion then go model trainner  component
+# run:python -m src.components.data_ingestion        then go model trainner  component
 ## 13 .
     data_transformation = DataTransformation()
 ##18 then go to application.py

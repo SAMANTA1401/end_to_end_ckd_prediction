@@ -27,27 +27,31 @@
             </div>
             <div class="mb3">
                 <label for="" class="form-control">Enter Urin's Specific Gravity :</label>
-                <input type="number" step=any id="sg" name="sg" required placeholder="enter specific gravity" min=0 max=10 />
+                <input type="number" step=any id="sg" name="sg" required placeholder="enter specific gravity" min=0
+                    max=10 />
             </div>
             <div class="mb3">
                 <label for="" class="form-control">Enter Albumin :</label>
-                <input type="number"step=any  id="al" name="al" required placeholder="enter albumin" min=0 max=100 />g/dl
+                <input type="number" step=any id="al" name="al" required placeholder="enter albumin" min=0
+                    max=100 />g/dl
             </div>
             <div class="mb3">
                 <label for="" class="form-control">Enter Blood Glucose Random :</label>
-                <input type="number" step=any id="bgr" name="bgr" required placeholder="enter bgr" min=0 max=500 />mgs/dl
+                <input type="number" step=any id="bgr" name="bgr" required placeholder="enter bgr" min=0
+                    max=500 />mgs/dl
             </div>
             <div class="mb3">
                 <label for="" class="form-control">Enter Sugar Level :</label>
-                <input type="number" step=any id="su" name="su" required placeholder="enter sugar" min=0 max=100 />mmol/L
+                <input type="number" step=any id="su" name="su" required placeholder="enter sugar" min=0
+                    max=100 />mmol/L
             </div>
             <div class="mb3">
                 <label for="" class="form-control">Enter Blood Urea :</label>
-                <input type="number"step=any id="bu" name="bu" required placeholder="enter blood urea" />mgs/dl
+                <input type="number" step=any id="bu" name="bu" required placeholder="enter blood urea" />mgs/dl
             </div>
             <div class="mb3">
                 <label for="" class="form-control">Enter Serum Creatinine :</label>
-                <input type="number" step=any  id="sc" name="sc" required placeholder="enter sc" />mgs/dl
+                <input type="number" step=any id="sc" name="sc" required placeholder="enter sc" />mgs/dl
             </div>
             <div class="mb3">
                 <label for="" class="form-control">Enter Sodium </label>
@@ -73,7 +77,7 @@
                 <label for="" class="form-control">Enter White Blood Ccell Count : </label>
                 <input type="number" step=any id="wc" name="wc" required placeholder="enter wbc " />cells/cumm
             </div>
-            
+
             <div class="mb-3">
                 <label class="form-label">RBC:</label>
                 <select name="rbc" class="form-control" placeholder="Enter RBC:" required>
@@ -159,7 +163,7 @@
             </div>
         </form>
         <!-- ouptput  will be displayed here.inplace of results get from app.py  file predict datapoit render template -->
-        <h2>The prediction is {{results}}</h2>
+        <h2>The person has {{results}}</h2>
 
 
     </div>

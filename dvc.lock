@@ -1,0 +1,26 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: python -m src.components.data_ingestion
+    deps:
+    - path: src/components/data_ingestion.py
+      hash: md5
+      md5: 313e84ff31b26147616a03a3e65039c2
+      size: 3932
+    - path: src/components/data_transformation.py
+      hash: md5
+      md5: f57b7d2fd88691b7c879c80f06424a3f
+      size: 5164
+    - path: src/components/model_trainer.py
+      hash: md5
+      md5: 0f177eb6273034fbbb87f9c7ee306222
+      size: 3780
+    outs:
+    - path: artifacts/model.pkl
+      hash: md5
+      md5: 1193f5ee3f863e05ede5f1fc4bebfa54
+      size: 2552
+    - path: artifacts/preprocessor.pkl
+      hash: md5
+      md5: bc8d8d34c46e17d9883d5494f8726f37
+      size: 4443
