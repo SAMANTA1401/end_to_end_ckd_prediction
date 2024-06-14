@@ -15,6 +15,7 @@ class PredictPipeline:
     def predict(self,features):
         try:
             model_path = 'artifacts\model.pkl'
+            #model_path = 'model\model.pkl'
             preprocessor_path= 'artifacts\preprocessor.pkl' # preprocess the input data
             logging.info("before loading")
             model=load_object(file_path=model_path)
