@@ -1,5 +1,5 @@
 ### CKD prediction using classification  model
-prediction of ckd with medical test data using various ml model and find best model with high f1 score
+prediction of ckd(Chronic kidney disease) with medical test data using various ml model and find best model with high f1 score
 
 #### STEP-1: Clone the repository   
 ```bash
